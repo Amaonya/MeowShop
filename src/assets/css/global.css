@@ -7,4 +7,37 @@ body,
     padding: 0;
 }
 
+* {
+    font-family: “Arial”, “Microsoft YaHei”, “黑体”, “宋体”, sans-serif;
+}
 
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.el-breadcrumb {
+    margin-bottom: 20px;
+}
+
+.el-table {
+    margin-top: 20px;
+    width: 99.99% !important;
+    font-size: 13px;
+
+}
+
+.el-table__body,
+.el-table__header,
+.el-table__empty-block {
+    width: 99.99% !important;
+}
+
+.el-table th.gutter {
+    display: table-cell !important;
+}
+
+.el-pagination {
+    margin-top: 25px;
+}

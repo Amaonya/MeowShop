@@ -6,6 +6,16 @@ import './plugins/element.js'
 import './assets/css/global.css'
 
 import axios from 'axios'
+
+// axios请求拦截
+axios.interceptors.request.use(config => {
+  // 为请求头添加Token验证的Authorization字段
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  // 一定要return
+  return config
+})
+
+
 // 配置请求根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 Vue.prototype.$http = axios

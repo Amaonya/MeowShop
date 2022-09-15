@@ -17,8 +17,8 @@
 
         <!-- 按钮 -->
         <el-form-item class="btns">
-          <button class="button-68" role="button" @click="login">登录</button>
-          <button class="button-69" role="button" @click="resetForm">重置</button>
+          <button class="button-68" role="button" @click.prevent="login">登录</button>
+          <button class="button-69" role="button" @click.prevent="resetForm">重置</button>
         </el-form-item>
 
       </el-form>
@@ -31,6 +31,7 @@
 
 <script>
 export default {
+  name: 'Login',
   data() {
     return {
       // 表单的数据绑定对象
@@ -56,6 +57,7 @@ export default {
     resetForm() {
       this.$refs.loginFormRef.resetFields()
     },
+    
     login() {
       this.$refs.loginFormRef.validate(
         async (valid) => {
@@ -76,10 +78,11 @@ export default {
 
 <style lang="less" scoped>
 .login_container {
-  // background: url(../assets/cool-background.png) center;
   height: 100%;
   background: rgb(185, 147, 214);
   background: linear-gradient(90deg, rgba(185, 147, 214, 1) 0%, rgba(140, 166, 219, 1) 100%);
+  background: rgb(160,132,202);
+  background: linear-gradient(90deg, rgba(160,132,202,1) 0%, rgba(100,92,170,1) 50%);
 }
 
 .login_box {
@@ -119,7 +122,7 @@ export default {
   margin-left: 10px;
   appearance: none;
   backface-visibility: hidden;
-  background-color: rgb(167, 117, 207);
+  background-color: #9962c6;
   border-radius: 16px;
   border-style: none;
   box-shadow: rgba(73, 39, 174, 0.15) 0 4px 9px;
@@ -163,7 +166,8 @@ export default {
 
 .button-69:extend(.button-68) {
   background-color: rgb(255, 255, 255);
-  color: rgb(167, 117, 207);
+  // color: #9c61cc;
+  color: #9962c6;
 
   &:hover {
     opacity: 1;
