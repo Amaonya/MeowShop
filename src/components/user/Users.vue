@@ -47,7 +47,8 @@
                         </el-button>
                         <!-- 分配角色 -->
                         <el-tooltip content="分配角色" placement="top" :enterable="false" size="small">
-                            <el-button type="warning" icon="el-icon-setting" circle size="small"></el-button>
+                            <el-button type="warning" icon="el-icon-setting" circle size="small" @click="setRole(row)">
+                            </el-button>
                         </el-tooltip>
                         <!-- 删除 -->
                         <el-button type="danger" icon="el-icon-delete" circle size="small"
@@ -106,6 +107,23 @@
             </div>
         </el-dialog>
 
+        <!-- 分配角色的表单 -->
+        <el-dialog title="分配角色" :visible.sync="setRoleFormVisible" @close="setRoleFormClosed">
+            <div>
+                <p>当前用户：{{userInfo.username}}</p>
+                <p>当前角色：{{userInfo.role_name}}</p>
+                <span>分配新角色：</span>
+                <el-select v-model="selectedRoleId" placeholder="请选择">
+                    <el-option v-for="item in rolesList" :key="item.id" :label="item.roleName" :value="item.id">
+                    </el-option>
+                </el-select>
+            </div>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="setRoleFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="saveRoleInfo">确 定</el-button>
+            </div>
+        </el-dialog>
+
     </div>
 </template>
 
@@ -145,6 +163,9 @@ export default {
                 mobile: ''
             },
             editUserForm: {},
+            userInfo: {},
+            rolesList: [],
+            selectedRoleId:'',
 
             addUserFormRules: {
                 username: [
@@ -177,6 +198,7 @@ export default {
 
             addUserFormVisible: false,
             editUserFormVisible: false,
+            setRoleFormVisible: false,
 
         }
     },
@@ -258,9 +280,11 @@ export default {
         },
         // 重置编辑用户表单
         resetEditForm() {
+            this.editUserForm = {}
             this.$refs.editUserFormRef.resetFields()
         },
 
+        // 删除用户
         delUser(id, username) {
             this.$confirm(`此操作将永久删除用户【${username}】, 是否继续?`, '提示', {
                 confirmButtonText: '确定',
@@ -274,7 +298,31 @@ export default {
             }).catch(() => {
                 this.$message.info('已取消删除')
             });
+        },
+
+        async setRole(userInfo) {
+            this.userInfo = userInfo
+            const { data: res } = await this.$http.get('roles')
+            if (res.meta.status !== 200) return this.$message.error('获取角色列表失败')
+            this.rolesList = res.data
+            this.setRoleFormVisible = true
+
+        },
+
+        async saveRoleInfo(){
+            if(!this.selectedRoleId) return this.$message.info('请选择要分配的角色！')
+            const { data: res } = await this.$http.put(`users/${this.userInfo.id}/role`,{rid:this.selectedRoleId})
+            if (res.meta.status !== 200) return this.$message.error('分配角色失败')
+            this.$message.success('分配角色成功~')
+            this.getUserList()
+            this.setRoleFormVisible = false
+        },
+
+        setRoleFormClosed(){
+            this.selectedRoleId = ''
+            this.userInfo = {}
         }
+
     }
 }
 </script>
