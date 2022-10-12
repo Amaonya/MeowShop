@@ -30,7 +30,8 @@ import {
   Backtop,
   Tree,
   Select,
-  Option
+  Option,
+  Cascader
 }
 from 'element-ui'
 
@@ -66,6 +67,7 @@ Vue.use(Backtop)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
 
 
 

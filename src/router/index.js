@@ -6,6 +6,7 @@ import Welcome from '../components/Welcome.vue'
 import Users from '../components/user/Users.vue';
 import Rights from '../components/right/Rights.vue'
 import Roles from '../components/right/Roles.vue'
+import Cate from '../components/goods/Cate.vue'
 
 
 import NProgress from 'nprogress'
@@ -41,6 +42,10 @@ const routes = [{
       {
         path: '/rights',
         component: Rights
+      },
+      {
+        path: '/categories',
+        component: Cate
       }
     ]
   },
