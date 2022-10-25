@@ -12,9 +12,7 @@
             <!-- 搜索与添加区域 -->
             <el-row :gutter="20">
                 <el-col :span="8">
-                    <el-input placeholder="请输入搜索内容" v-model="queryInfo.query" clearable @clear="getUserList"
-                        @change="getUserList">
-                        <el-button slot="prepend" icon="el-icon-search" @click="getUserList"></el-button>
+                    <el-input placeholder="请输入搜索内容" v-model="queryInfo.query" clearable >
                     </el-input>
                 </el-col>
                 <el-col :span="4">
@@ -201,6 +199,15 @@ export default {
             setRoleFormVisible: false,
 
         }
+    },
+    watch: {
+        'queryInfo.query': {
+            handler() {
+                this.getUserList(this.queryInfo.query)
+            },
+            deep: true
+        }
+
     },
     methods: {
         // 获取用户列表
