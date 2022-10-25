@@ -176,7 +176,6 @@ export default {
       this.$refs.editRoleFormRef.validate(
         async (valid) => {
           if (!valid) return
-          console.log(this.editRoleForm.roleId);
           const { data: res } = await this.$http.put(`roles/${this.editRoleForm.roleId}/`, { roleName: this.editRoleForm.roleName, roleDesc: this.editRoleForm.roleDesc })
           if (res.meta.status !== 200) return this.$message.error('编辑角色信息失败')
           this.editRoleFormVisible = false;
@@ -249,7 +248,6 @@ export default {
       const keys = [...this.$refs.tree.getCheckedKeys(),...this.$refs.tree.getHalfCheckedKeys()]
       // join方法把数组中的所有元素转换为一个字符串
       const idStr = keys.join(',')
-      console.log(this.roleId);
       const { data: res } = await this.$http.post(`roles/${this.roleId}/rights`,{rids:idStr})
       if (res.meta.status !== 200) return this.$message.error('分配权限失败')
       this.$message.success('分配权限成功~')

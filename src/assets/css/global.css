@@ -41,3 +41,15 @@ a {
 .el-pagination {
     margin-top: 25px;
 }
+
+.el-steps {
+    margin: 20px 0;
+}
+
+.el-step__title{
+    font-size: 14px;
+}
+
+.ql-editor{
+    min-height: 300px;
+}

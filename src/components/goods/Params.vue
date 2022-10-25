@@ -245,7 +245,6 @@ export default {
 
         // 通过插槽拿到参数Id 发请求拿到数据展示对话框
         async showEditForm(attr) {
-            console.log(attr);
             const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes/${attr.attr_id}/`)
             if (res.meta.status !== 200) {
                 return this.$message.error('编辑失败')
