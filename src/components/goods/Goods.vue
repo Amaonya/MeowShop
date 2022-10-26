@@ -25,7 +25,7 @@
                 </el-table-column>
                 <el-table-column prop="goods_name" label="商品名称" width="570">
                 </el-table-column>
-                <el-table-column prop="goods_price" label="商品价格(元)" width="90">
+                <el-table-column prop="goods_price" label="商品价格" width="90">
                 </el-table-column>
                 <el-table-column prop="goods_weight" label="商品重量" width="90">
                 </el-table-column>
@@ -51,7 +51,7 @@
         </el-card>
 
         <!-- 编辑商品表单 -->
-        <el-dialog title="编辑商品" :visible.sync="editGoodsFormVisible" @close="resetEditForm" :close-on-click-modal="false">
+        <el-dialog title="编辑商品" :visible.sync="editGoodsFormVisible" @close="resetEditForm">
             <el-form :model="editGoodsForm" :rules="editGoodsFormRules" ref="editGoodsFormRef">
                 <el-form-item label="商品名称" prop="goods_name">
                     <el-input autocomplete="off" v-model="editGoodsForm.goods_name"></el-input>

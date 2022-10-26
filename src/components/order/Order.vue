@@ -51,7 +51,7 @@
 
             <!-- 分页 -->
             <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                :current-page="queryInfo.pagenum" :page-sizes="[8, 10]" :page-size="queryInfo.pagesize"
+                :current-page="queryInfo.pagenum" :page-sizes="[7, 10]" :page-size="queryInfo.pagesize"
                 layout="total, sizes, prev, pager, next, jumper" :total="total">
             </el-pagination>
         </el-card>
@@ -96,7 +96,7 @@ export default {
             queryInfo: {
                 query: '',
                 pagenum: 1,
-                pagesize: 8
+                pagesize: 7
             },
             addressForm: {
                 address: [],

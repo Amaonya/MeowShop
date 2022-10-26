@@ -5,15 +5,15 @@
                 <div class="welcomeText">
                     <h2>欢迎回来。</h2>
                     <h3>WELCOME BACK.</h3>
-                    <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio eum temporibus eos dolor repellat
-                        voluptatem nisi in mollitia? Recusandae eligendi natus quas optio repudiandae, laborum sed
-                        magni.
+                    <h4>This Back Office system is my first Vue project. 
+                        And this experience has given me a better understanding of Axios and ElementUI.
+                         However, there are still many shortcomings. I hope to do better on my next project.
                         <a
                             href="https://www.freepik.com/free-vector/flat-people-business-training_13560919.htm#query=flat%20business%20training&position=6&from_view=search">Image
                             by pikisuperstar</a> on Freepik.
                     </h4>
                     <!-- <h4></h4> -->
-                    <el-button type="primary" round>联系作者</el-button>
+                    <el-button type="primary" round>Made by Amaonya</el-button>
                 </div>
             </el-col>
 
@@ -24,9 +24,9 @@
             </el-col>
         </el-row>
         <div class="links">
-            <el-link >GITHUB</el-link>
-            <el-link >GITEE</el-link>
-            <el-link >BILIBILI</el-link>
+            <el-link href="https://github.com/Amaonya">GITHUB</el-link>
+            <el-link href="https://gitee.com/amaonya">GITEE</el-link>
+            <el-link href="https://space.bilibili.com/1621112">BILIBILI</el-link>
 
         </div>
     </el-card>

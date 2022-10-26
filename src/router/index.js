@@ -13,9 +13,6 @@ import Add from '../components/goods/Add.vue'
 import Order from '../components/order/Order.vue'
 import Report from '../components/report/Report.vue'
 
-
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -81,17 +78,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, _, next) => {
-  NProgress.start()
   if (to.path === '/login') return next()
   // 获取token
   const tokenStr = window.sessionStorage.getItem('token')
   // 如果token为空 那么强制跳转到登录页面
   if (!tokenStr) return next('/login')
   next()
-})
-
-router.afterEach(() => {
-  NProgress.done()
 })
 
 export default router
